@@ -1,0 +1,305 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Spotify Mix;
+}
+
+body{
+    height:100vh;
+    background-color: black;
+    
+}
+
+.left,.middle,.right{
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.left img{
+    height: 33px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding:8px 27px;
+    padding-right:10px;
+    padding-bottom:1px
+
+}
+
+.middle{
+    gap:15px;
+    margin-left: 50vh;
+}
+
+.homeBtn{
+    color:white;
+    border:none;
+    background-color: #1f1f1f;
+    font-size: 27px;
+ width:30px;
+ height: 30px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 25px;
+cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.search{
+    border:none;
+    background-color: #1f1f1f;
+    padding:15px 50px;
+    border-radius: 50px;
+      transition: background 0.3s ease;
+    width:450px;
+    color: white;
+    font-size: 15px;
+}
+
+.search:hover,.homeBtn:hover{
+    background: #2a2a2a;
+}
+
+.search::placeholder{
+    color:rgba(255, 255, 255, 0.621);
+    font-size: 16px;
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.inputContainer i{
+    color:rgba(255, 255, 255, 0.471);
+   left:3%;
+   top:47%;
+   font-size: 25px;
+   transform: translateY(-50%);
+    position: absolute;
+
+}
+
+.right{
+    color:white;
+    gap:15px;
+   
+    
+}
+
+.logIn{
+    padding:10px 30px;
+    border-radius:50px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.sign-up{
+    font-size: 14px;
+}
+
+.install{
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+main{
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+  gap:7px
+
+}
+
+.hero-left{
+    background-color: red;
+    width:23%;
+    height:83vh;
+    border-radius: 5px;
+    background-color: rgb(18,18,18);
+    padding:18px 10px;
+}
+
+.hero-right{
+    background-color: blue;
+    width:78%;
+    height:83vh;
+    border-radius: 5px;
+    background-color: rgb(18,18,18);
+}
+
+.first{
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 10px;
+    margin-bottom: 45px;
+}
+
+.first p{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.first i{
+font-size: 20px;
+font-weight: 100;
+color: #939292;
+
+}
+
+.second{
+    display: flex;
+    flex-direction: column;
+    color:white;
+    align-items: flex-start;
+    background: #1f1f1f;
+    border-radius: 7px;
+    padding:15px 0 15px 15px;
+    margin-bottom: 20px;
+}
+
+.second h3{
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.second p{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.second button{
+    font-weight: 600;
+    padding:7px 17px;
+    border-radius: 50px;
+}
+
+.third{
+    display: flex;
+    flex-direction: column;
+    color:white;
+    align-items: flex-start;
+    background: #1f1f1f;
+    border-radius: 7px;
+    padding:15px 0 15px 15px;
+    margin-bottom: 20px;
+}
+
+.third h3{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.third p{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.third button{
+    font-weight: 600;
+    padding:7px 17px;
+    border-radius: 50px;
+}
+
+.paragraph{
+    margin-top: 23vh;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    padding-left: 14px;;
+}
+
+.paragraph .t-para{
+    color:white;
+    font-size: 12px;
+}
+
+.f-para,.s-para{
+    color:#b3b3b3;
+    display: flex;
+    font-size:11px;
+    align-items: center;
+    gap:15px
+}
+
+.lang{
+    background: transparent;
+    padding:5px 12px;
+    border:1px solid #b3b3b3;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:7px;
+    border-radius: 50px;
+    margin-top: 3vh;
+    margin-left: 15px;
+}
+.lang i{
+    font-size: 18px;
+}
+.lang span{
+    font-weight: 600;
+}
+
+footer{
+    background: linear-gradient(to right, #8e197b, #3a7bd5);
+    padding:18px 15px;
+    margin-left: 8px;
+    margin-right: 8px;
+    /* margin-bottom: 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+footer button{
+    font-weight: 600;
+    font-size: 15px;
+    border:none;
+    background: white;
+    padding:10px 20px;
+    border-radius: 50px;
+}
+
+.left-footer{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    gap:3px
+}
+
+
+.left-footer p:nth-child(1){
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.hero-right h1{
+    color:white;
+    font-size: 23px;
+}
+
+.hero-right{
+    background-color: blue;
+    width:78%;
+    height:83vh;
+    border-radius: 5px;
+    background-color: rgb(18,18,18);
+    padding:22px 35px
+}
+
+.songs-list{
+    
+}
