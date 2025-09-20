@@ -1,5 +1,6 @@
 const songsList = document.querySelector('.songs-list');
-const playBtn = document.querySelector(".play-btn");
+
+const player = document.querySelector(".player");
 
 const songsArr = [{
     poster:"https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png",
@@ -79,7 +80,7 @@ for (let i = 0; i < 12; i++) {
   
   
     html+= `
-      <div class="card"> <button class="play-btn"><i class="ri-play-fill"></i></button> <img src="${song.poster}" alt=""> <p>${song.name}</p> <p>${song.artist}</p> </div>
+      <div data-song="${song.musicUrl}" class="card"> <button class="play-btn"><i class="ri-play-fill"></i></button> <img src="${song.poster}" alt=""> <p>${song.name}</p> <p>${song.artist}</p> </div>
     `;
   
   
@@ -90,4 +91,31 @@ for (let i = 0; i < 12; i++) {
 
 generateCards();
 
+const playBtn = document.querySelectorAll(".play-btn");
 
+
+//function to play music on button click
+
+let currentSong = null;
+let isPlaying = false;
+
+playBtn.forEach(btn =>{
+    btn.addEventListener("click", e=>{
+        const crd = e.target.closest(".card");
+        const song = crd.getAttribute("data-song");
+
+        if(!song) return; // no file, ignore click
+
+        if(currentSong === song && isPlaying){
+            // pause if same song clicked again
+            player.pause();
+            isPlaying = false;
+        }else{
+            // play new song
+            player.src = song;
+            player.play();
+            currentSong = song;
+            isPlaying = true;
+        }
+    })
+});
