@@ -299,25 +299,31 @@ footer button{
     border-radius: 5px;
     background-color: rgb(18,18,18);
     padding:22px 20px;
-    overflow-x: auto;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    overflow-x:hidden;
 }
 
-.hero-right::-webkit-scrollbar{
+
+
+.songs-list {
+    display: grid;
+    grid-auto-flow: column; /* forces items in a single row */
+    grid-auto-columns: 200px; /* width of each card */
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    color: white;
+}
+
+.songs-list::-webkit-scrollbar{
     display: none;
 }
-
-.songs-list{
-    display: flex;
-    align-items: center;
-    color:white;
-    gap:10px
-}
-
-.songs-list img{
+.card img{
     border-radius: 7px;
-    height:180px
+    width:100%;
+   height: 180px;
+    object-fit: cover;
+  
+
 }
 
 .card{
@@ -328,6 +334,11 @@ footer button{
     transition: background 0.3s ease;
     position: relative;
     align-items: flex-start;
+    width:200px;
+    cursor: pointer;
+ 
+    
+  
 
 }
 
@@ -343,21 +354,24 @@ footer button{
     padding-left:5px;
     font-size: 30px;
     position: absolute;
-    top:55%;
+    top:50%;
     right:20px;
     
 }
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: rgba(128, 128, 128, 0.1); /* grey overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 7px; /* inherit radius from card */
+   
+  }
 
-
-.card:hover{
-    background: #1f1f1f;
-  
-}
-
-
-
-
-
+  .card:hover::after{
+    opacity: 1;
+  }
 
 
 .card p:nth-child(4){
