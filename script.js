@@ -2,6 +2,9 @@ const songsList = document.querySelector('.songs-list');
 
 const player = document.querySelector(".player");
 
+const slideR = document.querySelector('.slide-right');
+const slideL = document.querySelector('.slide-left')
+
 const songsArr = [{
     poster:"https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png",
     name:"Blinding Lights",
@@ -80,7 +83,7 @@ for (let i = 0; i < 12; i++) {
   
   
     html+= `
-      <div data-song="${song.musicUrl}" class="card"> <button class="play-btn"><i class="ri-play-fill"></i></button> <img src="${song.poster}" alt=""> <p>${song.name}</p> <p>${song.artist}</p> </div>
+      <div data-song="${song.musicUrl}" class="card"> <button class="play-btn"><i class="icon ri-play-fill"></i></button> <img src="${song.poster}" alt=""> <p>${song.name}</p> <p>${song.artist}</p> </div>
     `;
   
   
@@ -92,7 +95,7 @@ for (let i = 0; i < 12; i++) {
 generateCards();
 
 const playBtn = document.querySelectorAll(".play-btn");
-
+const icon = document.querySelector(".icon")
 
 //function to play music on button click
 
@@ -110,12 +113,38 @@ playBtn.forEach(btn =>{
             // pause if same song clicked again
             player.pause();
             isPlaying = false;
+            icon.classList.remove("ri-pause-fill");
+            icon.classList.add("ri-play-fill");
         }else{
+          
             // play new song
             player.src = song;
             player.play();
             currentSong = song;
             isPlaying = true;
+            icon.classList.remove("ri-play-fill");
+            icon.classList.add("ri-pause-fill");
         }
     })
 });
+
+
+
+//function to slide cards when slideR button is clicked
+function slideCards(){
+slideR.addEventListener("click",()=>{
+    songsList.scrollBy({
+        left:400,
+        behavior:"smooth"
+    })
+})
+slideL.addEventListener("click",()=>{
+    
+    songsList.scrollBy({
+        left:-400,
+        behavior:"smooth"
+    })
+})
+
+}
+slideCards();
