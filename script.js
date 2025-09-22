@@ -4,7 +4,7 @@ const player = document.querySelector(".player");
 
 const slideR = document.querySelector('.slide-right');
 const slideL = document.querySelector('.slide-left')
-
+const artistList = document.querySelector(".artist-list")
 const songsArr = [{
     poster:"https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png",
     name:"Blinding Lights",
@@ -75,6 +75,55 @@ const songsArr = [{
 ]
 
 
+
+const artistArr = [{
+    poster:"https://i.scdn.co/image/ab6761610000e5ebcb6926f44f620555ba444fca",
+    name:"Pritam",
+    
+   
+},{
+    poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBy9yNSritHoVpM2NTY9-AmZTn15q_2IUoyw&s",
+    name:"A.R Rahman",
+    
+},
+{
+    poster:"https://a10.gaanacdn.com/gn_img/artists/Dk9KNk23Bx/k9KNqJJbBx/size_m_1739172212.jpg",
+    name:"Arijit Singh",
+   
+},{
+    poster:"https://i.scdn.co/image/ab6761610000e5eb4293385d324db8558179afd9",
+    name:"Drake",
+    
+
+},{
+    poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL7svg323DD6Fcv7YCvZ43chm4AF4aMjwv6Q&s",
+    name:"Eminem",
+   
+}
+,{
+    poster:"https://www.shreyaghoshal.com/static/asset/images/shreya-image.png",
+    name:"Shreya Ghosal",
+   
+},{
+    poster:"https://artistbookingcompany.com/wp-content/uploads/2024/03/atif-aslam-680x680.jpg",
+    name:"Atif Aslam",
+    
+},{
+    poster:"https://i.abcnewsfe.com/a/e16f0222-a991-4a91-a8f2-574eba868991/billie-eilish-1-gty-bb-240424_1713987300511_hpMain_16x9.jpg?w=992",
+    name:"Billie Elish",
+   
+},{
+    poster:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKjAP928tutk2KSKLcDnnTV1mhbS-Vud7klA&shttps://posterwa.com/cdn/shop/files/RAPPER13.jpg?v=1686078548",
+    name:"Ed Sheeran",
+  
+},{
+    poster:"https://upload.wikimedia.org/wikipedia/commons/e/e7/%22AM%22_%28Arctic_Monkeys%29.jpg",
+    name:"Arctic Monkeys"
+}
+
+]
+
+
 function generateCards(){
 
 let html ="";
@@ -95,17 +144,18 @@ for (let i = 0; i < 12; i++) {
 generateCards();
 
 const playBtn = document.querySelectorAll(".play-btn");
-const icon = document.querySelector(".icon")
+
 
 //function to play music on button click
 
 let currentSong = null;
 let isPlaying = false;
-
+let currentIcon = null;
 playBtn.forEach(btn =>{
     btn.addEventListener("click", e=>{
         const crd = e.target.closest(".card");
         const song = crd.getAttribute("data-song");
+        const icon = crd.querySelector(".icon")
 
         if(!song) return; // no file, ignore click
 
@@ -116,7 +166,10 @@ playBtn.forEach(btn =>{
             icon.classList.remove("ri-pause-fill");
             icon.classList.add("ri-play-fill");
         }else{
-          
+            if (currentIcon) {
+                currentIcon.classList.remove("ri-pause-fill");
+                currentIcon.classList.add("ri-play-fill");
+            }
             // play new song
             player.src = song;
             player.play();
@@ -124,6 +177,8 @@ playBtn.forEach(btn =>{
             isPlaying = true;
             icon.classList.remove("ri-play-fill");
             icon.classList.add("ri-pause-fill");
+
+            currentIcon = icon;
         }
     })
 });
@@ -137,6 +192,8 @@ slideR.addEventListener("click",()=>{
         left:400,
         behavior:"smooth"
     })
+
+    
 })
 slideL.addEventListener("click",()=>{
     
@@ -144,7 +201,32 @@ slideL.addEventListener("click",()=>{
         left:-400,
         behavior:"smooth"
     })
+
+    
 })
+
+songsList.addEventListener("scroll", () => {
+    slideL.style.opacity = songsList.scrollLeft > 0 ? 1 : 0;
+});
+
+
 
 }
 slideCards();
+
+//function to generate artist cards
+function generateArtistCards(){
+    let html ="";
+    for(let i=0;i<10;i++){
+        const song = artistArr[i];
+
+        html+=` <div class="card br">
+                    <img src="${song.poster}" alt="">
+                    <p>${song.name}</p>
+                    <p>Artist</p></div>`
+    }
+
+    artistList.innerHTML = html;
+}
+
+generateArtistCards()
