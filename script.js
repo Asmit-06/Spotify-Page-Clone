@@ -283,3 +283,13 @@ player.addEventListener("play",()=>{
 player.addEventListener('pause',()=>{
     playBtnIcon.className="ri-play-fill"
 })
+
+
+//function to increase the progress bar 
+function increaseProgressBar(){
+    player.addEventListener("timeupdate",()=>{
+         let playerValue = (player.currentTime/player.duration)*100;
+        progressBar.style.setProperty("--x",playerValue+"%")
+    })
+}
+increaseProgressBar();
