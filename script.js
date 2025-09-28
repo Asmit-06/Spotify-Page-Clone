@@ -4,7 +4,12 @@ const player = document.querySelector(".player");
 
 const slideR = document.querySelector('.slide-right');
 const slideL = document.querySelector('.slide-left')
+const artistslideR = document.querySelector('.artist-slide-right');
+const artistslideL = document.querySelector('.artist-slide-left')
 const artistList = document.querySelector(".artist-list")
+const progressBar = document.querySelector('.progress-bar');
+const playMainBtn = document.querySelector('.play-music-btn');
+const playBtnIcon = playMainBtn.querySelector("i");
 const songsArr = [{
     poster:"https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png",
     name:"Blinding Lights",
@@ -147,7 +152,7 @@ const playBtn = document.querySelectorAll(".play-btn");
 
 
 //function to play music on button click
-
+function playMusic(){
 let currentSong = null;
 let isPlaying = false;
 let currentIcon = null;
@@ -183,6 +188,9 @@ playBtn.forEach(btn =>{
     })
 });
 
+}
+playMusic();
+
 
 
 //function to slide cards when slideR button is clicked
@@ -213,6 +221,33 @@ songsList.addEventListener("scroll", () => {
 
 }
 slideCards();
+function slideCardsArtist(){
+artistslideR.addEventListener("click",()=>{
+    artistList.scrollBy({
+        left:400,
+        behavior:"smooth"
+    })
+
+    
+})
+artistslideL.addEventListener("click",()=>{
+    
+    artistList.scrollBy({
+        left:-400,
+        behavior:"smooth"
+    })
+
+    
+})
+
+artistList.addEventListener("scroll", () => {
+    artistslideL.style.opacity = artistList.scrollLeft > 0 ? 1 : 0;
+});
+
+
+
+}
+slideCardsArtist();
 
 //function to generate artist cards
 function generateArtistCards(){
@@ -230,3 +265,21 @@ function generateArtistCards(){
 }
 
 generateArtistCards()
+
+
+//play music for the main player
+playMainBtn.addEventListener('click',()=>{
+    if(player.paused){
+        player.play();
+    }else{
+        player.pause();
+    }
+})
+
+player.addEventListener("play",()=>{
+    playBtnIcon.className ="ri-pause-fill"
+})
+
+player.addEventListener('pause',()=>{
+    playBtnIcon.className="ri-play-fill"
+})
