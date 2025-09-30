@@ -481,6 +481,7 @@ height:100%;
     justify-content: center;
     flex-direction: column;
     gap:20px;
+    position: relative;
 }
 
 .controls-icon{
@@ -519,5 +520,20 @@ height:100%;
     
 }
 
+.music-player-small{
+    position:absolute;
+    color:white;
+    display: flex;
+    align-items: center;
+    gap:20px;
+    top:43%;
+    left:1%;
+ 
+   
+}
 
-
+.music-player-small img{
+    height:40px;
+    border-radius: 5px;
+    width:40px;
+}

@@ -10,8 +10,9 @@ const artistList = document.querySelector(".artist-list")
 const progressBar = document.querySelector('.progress-bar');
 const playMainBtn = document.querySelector('.play-music-btn');
 const playBtnIcon = playMainBtn.querySelector("i");
+const smallMusicDiv = document.querySelector(".music-player-small")
 const songsArr = [{
-    poster:"https://upload.wikimedia.org/wikipedia/en/e/e6/The_Weeknd_-_Blinding_Lights.png",
+    poster:"https://metalpop.in/cdn/shop/files/1_90c1d19d-a219-4480-b19a-aa0a487b0623.jpg?v=1716027144",
     name:"Blinding Lights",
     artist:"The Weeknd",
     musicUrl:"bl.mp3"
@@ -23,7 +24,7 @@ const songsArr = [{
 },
 {
     poster:"https://manganim.fr/cdn/shop/files/demon-slayer-poster-piliers_9ef462e5-3870-4b0f-959a-54daacee4092_2048x.jpg?v=1717584928",
-    name:"Demon Slayer:Infinite Castle Entry Theme",
+    name:"Demon Slayer:Infinite Castle",
     artist:"Kibutsuji Muzan",
     musicUrl:"ds.mp3"
 },{
@@ -161,6 +162,13 @@ playBtn.forEach(btn =>{
         const crd = e.target.closest(".card");
         const song = crd.getAttribute("data-song");
         const icon = crd.querySelector(".icon")
+        
+       const img = crd.querySelector("img").src;
+       const title = crd.querySelectorAll("p")[0].innerHTML;
+       
+       smallMusicDiv.innerHTML=`<img src="${img}" alt="${title}">
+            <p><strong>${title}</strong></p>`
+
 
         if(!song) return; // no file, ignore click
 
