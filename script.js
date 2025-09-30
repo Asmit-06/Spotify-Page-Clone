@@ -43,38 +43,38 @@ const songsArr = [{
     poster:"https://i1.sndcdn.com/artworks-XbxZOWT3wDfia4Z5-5fiyBQ-t240x240.jpg",
     name:"Golden Hour",
     artist:"JVKE",
-    musicUrl:""
+    musicUrl:"JVKE - golden hour (Lyrics).mp3"
 },{
     poster:"https://i.pinimg.com/736x/12/58/93/1258931173e9861c652c27e53f41cf09.jpg",
     name:"Those eyes",
     artist:"New West",
-    musicUrl:""
+    musicUrl:"New West - Those Eyes (Lyrics).mp3"
 },{
     poster:"https://i1.sndcdn.com/artworks-000110993138-kfxe87-t1080x1080.jpg",
     name:"Lean On",
     artist:"Major Laser X DJ Snake",
-    musicUrl:""
+    musicUrl:"Major Lazer & DJ Snake - Lean On (feat. MØ) [Official Lyric Video].mp3"
 },{
     poster:"https://posterwa.com/cdn/shop/files/RAPPER13.jpg?v=1686078548",
     name:"Rap God",
     artist:"Eminem",
-    musicUrl:""
+    musicUrl:"Eminem - Rap God (Lyrics).mp3"
 },{
     poster:"https://preview.redd.it/q30kk4ohv2m41.jpg?width=640&crop=smart&auto=webp&s=00162899315f8755ab4be2df59ff5c89f4881f19",
     name:"Godzilla",
     artist:"Eminem X Juice Wrld",
-    musicUrl:""
+    musicUrl:"Godzilla (feat. Juice WRLD) [Official Audio].mp3"
 
 },{
     poster:"https://m.media-amazon.com/images/M/MV5BNmFlOWJkOTUtMzk5Ni00YjcxLTkyZTAtZjg5NmIzMTRkNjZkXkEyXkFqcGc@._V1_.jpg",
     name:"We dont talk anymore",
     artist:"Charlie Puth X Selena Gomez",
-    musicUrl :""
+    musicUrl :"Charlie Puth - We Don't Talk Anymore (feat. Selena Gomez) [LyricsVietsub].mp3"
 },{
     poster:"https://m.media-amazon.com/images/M/MV5BNWUwZGYzMjgtNmY0OC00MTliLWIwMDMtMjAzYjBkNmJkYWEyXkEyXkFqcGc@._V1_.jpg",
     name:"Attention",
     artist:"Charlie Puth",
-    musicUrl:""
+    musicUrl:"[Vietsub  Lyrics] Attention - Charlie Puth.mp3"
 }
 
 
@@ -167,7 +167,7 @@ playBtn.forEach(btn =>{
        const title = crd.querySelectorAll("p")[0].innerHTML;
        
        smallMusicDiv.innerHTML=`<img src="${img}" alt="${title}">
-            <p><strong>${title}</strong></p>`
+            <p>${title}</p>`
 
 
         if(!song) return; // no file, ignore click
@@ -301,3 +301,46 @@ function increaseProgressBar(){
     })
 }
 increaseProgressBar();
+
+
+let cIndex=0
+function nextSong(index){
+    const song = songsArr[index];
+    if(!song)return;
+    player.src = song.musicUrl;
+    player.play();
+    cIndex=index;
+
+   smallMusicDiv.innerHTML=`<img src="${song.poster}" alt="${song.name}">
+            <p>${song.name}</p>`
+
+    playBtnIcon.className = "ri-pause-fill";
+    playBtn.forEach(btn=>{
+        const icon = btn.querySelector(".icon");
+        const card = btn.closest(".card");
+        const cardSong = card.getAttribute("data-song");
+        if(cardSong == song.musicUrl){
+            icon.classList.add("ri-pause-fill");
+            icon.classList.remove("ri-play-fill")
+        }else{
+            icon.classList.remove("ri-pause-fill");
+            icon.classList.add("ri-play-fill");
+        }
+    })
+
+
+}
+
+
+const skipForwardBtn = document.querySelector(".forward");
+
+skipForwardBtn.addEventListener("click",()=>{
+    let nIndex = (cIndex+1)%songsArr.length;
+    nextSong(nIndex);
+})
+
+const skipBackBtn = document.querySelector(".back")
+skipBackBtn.addEventListener("click",()=>{
+    let nIndex = (cIndex-1+songsArr.length)%songsArr.length;
+    nextSong(nIndex)
+})
