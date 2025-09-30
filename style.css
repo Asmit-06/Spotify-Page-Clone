@@ -87,10 +87,16 @@ cursor: pointer;
 }
 
 .right{
-    color:white;
+    color:rgba(255, 255, 255, 0.668);
     gap:15px;
    
     
+}
+
+.right p:hover{
+    color: white;
+    cursor: pointer;
+    scale:1.05;
 }
 
 .logIn{
@@ -157,6 +163,8 @@ color: #939292;
 
 }
 
+
+
 .second{
     display: flex;
     flex-direction: column;
@@ -219,11 +227,24 @@ color: #939292;
     padding-left: 14px;;
 }
 
-.paragraph .t-para{
+ .t-para{
     color:white;
     font-size: 12px;
+   
+    cursor: pointer;
 }
 
+
+
+
+.addBtn:hover{
+    background-color: rgba(128, 128, 128, 0.44);
+    cursor: pointer;
+    border-radius: 50%;
+ 
+
+
+}
 .f-para,.s-para{
     color:#b3b3b3;
     display: flex;
@@ -537,4 +558,10 @@ height:100%;
     height:40px;
     border-radius: 5px;
     width:40px;
+}
+
+
+button:hover{
+    scale:1.05;
+    cursor: pointer;
 }
